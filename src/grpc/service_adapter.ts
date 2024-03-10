@@ -36,20 +36,9 @@ export const createServiceAdapter = (): {
         message: PartialMessage<I>,
         contextValues?: ContextValues
       ): Promise<UnaryResponse<I, O>> => {
-        console.log(
-          'unary',
-          service,
-          method,
-          signal,
-          timeoutMs,
-          header,
-          message,
-          contextValues
-        );
-
         for (const handler of router.handlers) {
-          if (handler.service === service) {
-            console.log('handler', handler);
+          if (handler.service.typeName === service.typeName && handler.method.name === method.name) {
+
             if (!signal) {
               const abortController = new AbortController();
               signal = abortController.signal;
@@ -91,11 +80,9 @@ export const createServiceAdapter = (): {
               stream: false,
             };
           }
-
-          throw new Error('handler not found');
         }
 
-        throw new Error('unary is not supported');
+        throw new Error('handler not found');
       },
       stream: async (
         service,
