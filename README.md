@@ -58,6 +58,35 @@ $ curl -X POST -H "Content-Type: application/json" -d '{}' http://localhost:8080
 $ curl 'http://localhost:8080/example.article.v1.ArticleService/ListArticle?encoding=json&message=\{\}'
 ```
 
+## Architecture
+
+このサンプルではモジュラモノリスアーキテクチャを採用しています。
+
+以下の2つサービスで構成されています。
+
+### ArticleService
+ArticleServiceは、記事の管理と提供を行うサービスです。
+
+公開API
+* ListArticle: 自サービスが管理する記事のリストを返却します。
+
+### UserService
+UserServiceは、ユーザの管理と情報提供を行うサービスです。
+
+内部API
+* GetUser: ユーザIDを受け取り、対応するユーザ情報を返却します。
+
+```mermaid
+graph TD;
+    ListArticle --> GetUser
+    subgraph ArticleService
+        ListArticle
+    end
+    subgraph UserService
+        GetUser
+    end
+```
+
 ## 未実装や制約項目
 
 * アプリケーション自体のエラーハンドリングが出来ていない
