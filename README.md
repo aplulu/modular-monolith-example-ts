@@ -1,6 +1,6 @@
 # modular-monolith-example-ts
 
-[Go](htts://github.com/aplulu/modular-monolith-example-go) | [TypeScript](https://github.com/aplulu/modular-monolith-example-ts)
+[Go](https://github.com/aplulu/modular-monolith-example-go) | [TypeScript](https://github.com/aplulu/modular-monolith-example-ts)
 
 TypeScript/NodeでのModular Monolith及びサービス間通信のサンプル実装です。
 
