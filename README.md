@@ -1,5 +1,7 @@
 # modular-monolith-example-ts
 
+[Go](htts://github.com/aplulu/modular-monolith-example-go) | [TypeScript](https://github.com/aplulu/modular-monolith-example-ts)
+
 TypeScript/NodeでのModular Monolith及びサービス間通信のサンプル実装です。
 
 サービス間の通信はgRPC経由としていますが、ServiceServerとServiceClientをServiceAdapterが仲介することにより、ネットワーク接続がない状態でgRPCを使ったサービス間通信を実現しています。
@@ -56,6 +58,16 @@ $ curl -X POST -H "Content-Type: application/json" -d '{}' http://localhost:8080
 $ curl 'http://localhost:8080/example.article.v1.ArticleService/ListArticle?encoding=json&message=\{\}'
 ```
 
+## 未実装や制約項目
+
+* アプリケーション自体のエラーハンドリングが出来ていない
+* gRPCのReflectionサービスがサポートされていない
+  * grpcurlでリクエストを送るためにはprotoファイルを指定する必要があり面倒
+  * Connect側で未サポート https://github.com/connectrpc/connect-es/issues/507
+* gRPC (Connect互換ではない方)とConnectの両対応
+  * 内部のサービス間通信にはConnectではなくgRPCを使いたい
+* HTTP1とHTTP2の両対応
+  * curl ( `--http2` つけてもだめ)とgrpcurlの両方でリクエストを送れるようにしたい
 
 ## ディレクトリ構成
 
