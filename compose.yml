@@ -1,0 +1,27 @@
+services:
+  app:
+    hostname: app
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/app
+      - app-empty:/app/node_modules
+    command: ["npm", "run", "dev"]
+  buf-generate:
+    build:
+      context: .
+      dockerfile: ./docker/buf-generate/Dockerfile
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - buf-generate-empty:/workspace/node_modules
+    command: generate
+    profiles:
+      - buf-generate
+
+volumes:
+  app-empty:
+  buf-generate-empty:

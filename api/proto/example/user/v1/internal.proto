@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package example.user.v1;
+
+import "example/user/v1/common.proto";
+
+// 内部呼び出し用のユーザサービス
+service InternalUserService {
+  // ユーザを取得
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+}
+
+message GetUserRequest {
+  // ユーザID
+  string user_id = 1;
+}
+
+message GetUserResponse {
+  // ユーザ
+  User user = 1;
+}

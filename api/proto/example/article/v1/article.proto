@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package example.article.v1;
+
+import "google/protobuf/empty.proto";
+import "example/article/v1/common.proto";
+
+// 記事サービス
+service ArticleService {
+  // ユーザを取得
+  rpc ListArticle(google.protobuf.Empty) returns (ListArticleResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+}
+
+message ListArticleResponse {
+  repeated Article articles = 1;
+}

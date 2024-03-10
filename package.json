@@ -1,0 +1,34 @@
+{
+  "name": "modular-monolith-example-ts",
+  "version": "1.0.0",
+  "description": "TypeScriptでのModular Monolith及びモジュール間通信のサンプル実装です。",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/entrypoint.ts",
+    "start": "tsx src/entrypoint.ts",
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write .",
+    "format-check": "prettier --check ."
+  },
+  "author": "Aplulu",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.25",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "@bufbuild/buf": "^1.30.0",
+    "@bufbuild/protobuf": "^1.7.2",
+    "@bufbuild/protoc-gen-es": "^1.7.2",
+    "@connectrpc/connect": "^1.4.0",
+    "@connectrpc/connect-fastify": "^1.4.0",
+    "@connectrpc/connect-node": "^1.4.0",
+    "@connectrpc/protoc-gen-connect-es": "^1.4.0",
+    "fastify": "^4.26.2"
+  }
+}

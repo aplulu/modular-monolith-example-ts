@@ -1,0 +1,8 @@
+version: v1
+plugins:
+  - plugin: buf.build/connectrpc/es:v1.4.0
+    out: src/grpc
+    opt: target=ts
+  - plugin: buf.build/bufbuild/es
+    out: src/grpc
+    opt: target=ts
